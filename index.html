@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Neo Slice Arena</title>
+<title>Neon Slice Arena</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,14 +36,100 @@ body{
 font-family:'Inter',sans-serif;
 
 background:
-radial-gradient(circle at top left, rgba(0,240,255,0.12), transparent 30%),
-radial-gradient(circle at bottom right, rgba(159,77,255,0.16), transparent 30%),
-var(--bg);
+radial-gradient(circle at top left, rgba(0,240,255,0.14), transparent 30%),
+radial-gradient(circle at bottom right, rgba(159,77,255,0.18), transparent 30%),
+#050816;
 
 color:var(--text);
 overflow-x:hidden;
 min-height:100vh;
+position:relative;
 }
+
+/* PARTICLES */
+
+.particles{
+position:fixed;
+inset:0;
+overflow:hidden;
+z-index:-2;
+}
+
+.particles span{
+position:absolute;
+display:block;
+width:6px;
+height:6px;
+background:rgba(0,240,255,0.8);
+border-radius:50%;
+animation:float 18s linear infinite;
+box-shadow:0 0 12px rgba(0,240,255,0.9);
+}
+
+.particles span:nth-child(1){
+left:10%;
+animation-duration:12s;
+top:100%;
+}
+
+.particles span:nth-child(2){
+left:20%;
+animation-duration:20s;
+top:100%;
+background:#ff2d95;
+}
+
+.particles span:nth-child(3){
+left:35%;
+animation-duration:15s;
+top:100%;
+}
+
+.particles span:nth-child(4){
+left:50%;
+animation-duration:22s;
+top:100%;
+background:#9f4dff;
+}
+
+.particles span:nth-child(5){
+left:65%;
+animation-duration:18s;
+top:100%;
+}
+
+.particles span:nth-child(6){
+left:80%;
+animation-duration:14s;
+top:100%;
+background:#ff2d95;
+}
+
+.particles span:nth-child(7){
+left:90%;
+animation-duration:25s;
+top:100%;
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0) scale(0);
+opacity:0;
+}
+
+10%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-120vh) scale(1.8);
+opacity:0;
+}
+
+}
+
+/* GRID */
 
 .bg-grid{
 position:fixed;
@@ -54,32 +140,112 @@ linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
 linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
 
 background-size:40px 40px;
-z-index:-1;
+z-index:-3;
 }
+
+/* GLOWING ORBS */
+
+.orb{
+position:fixed;
+border-radius:50%;
+filter:blur(80px);
+opacity:0.25;
+z-index:-1;
+animation:moveOrb 12s ease-in-out infinite alternate;
+}
+
+.orb1{
+width:300px;
+height:300px;
+background:#00f0ff;
+top:-80px;
+left:-80px;
+}
+
+.orb2{
+width:350px;
+height:350px;
+background:#9f4dff;
+bottom:-100px;
+right:-100px;
+animation-duration:16s;
+}
+
+@keyframes moveOrb{
+
+from{
+transform:translate(0,0);
+}
+
+to{
+transform:translate(50px,50px);
+}
+
+}
+
+/* HEADER */
 
 header{
 display:flex;
 justify-content:space-between;
 align-items:center;
 
-padding:28px 10%;
+padding:24px 8%;
 
 position:sticky;
 top:0;
 
-background:rgba(5,8,22,0.75);
+background:rgba(5,8,22,0.7);
 
-backdrop-filter:blur(12px);
+backdrop-filter:blur(14px);
+
+border-bottom:1px solid rgba(255,255,255,0.05);
 
 z-index:1000;
 }
 
-.logo{
+/* LOGO */
+
+.logo-wrap{
+display:flex;
+align-items:center;
+gap:16px;
+}
+
+.logo-wrap img{
+width:72px;
+height:72px;
+object-fit:contain;
+
+filter:
+drop-shadow(0 0 18px rgba(0,240,255,0.45));
+
+animation:pulse 3s infinite ease-in-out;
+}
+
+@keyframes pulse{
+
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.08);
+}
+
+100%{
+transform:scale(1);
+}
+
+}
+
+.logo-text{
 font-family:'Orbitron',sans-serif;
-font-size:1.4rem;
+font-size:1.3rem;
 font-weight:900;
 letter-spacing:2px;
 color:var(--cyan);
+line-height:1.3;
 }
 
 nav{
@@ -92,6 +258,22 @@ color:white;
 text-decoration:none;
 transition:0.3s;
 font-weight:500;
+position:relative;
+}
+
+nav a::after{
+content:'';
+position:absolute;
+left:0;
+bottom:-6px;
+width:0%;
+height:2px;
+background:var(--cyan);
+transition:0.3s;
+}
+
+nav a:hover::after{
+width:100%;
 }
 
 nav a:hover{
@@ -99,9 +281,11 @@ color:var(--cyan);
 text-shadow:0 0 12px var(--cyan);
 }
 
+/* HERO */
+
 .hero,
 .section{
-padding:100px 10%;
+padding:100px 8%;
 }
 
 .hero-content,
@@ -127,6 +311,8 @@ font-size:0.85rem;
 letter-spacing:2px;
 
 margin-bottom:24px;
+
+backdrop-filter:blur(8px);
 }
 
 h1{
@@ -147,6 +333,20 @@ var(--pink)
 
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+
+animation:glowText 4s infinite alternate;
+}
+
+@keyframes glowText{
+
+from{
+filter:drop-shadow(0 0 8px rgba(0,240,255,0.3));
+}
+
+to{
+filter:drop-shadow(0 0 18px rgba(255,45,149,0.5));
+}
+
 }
 
 h2{
@@ -196,9 +396,9 @@ color:black;
 }
 
 .primary-btn:hover{
-transform:translateY(-4px);
+transform:translateY(-4px) scale(1.04);
 
-box-shadow:0 0 30px rgba(0,240,255,0.4);
+box-shadow:0 0 35px rgba(0,240,255,0.5);
 }
 
 .secondary-btn{
@@ -209,6 +409,8 @@ color:white;
 .secondary-btn:hover{
 border-color:var(--cyan);
 }
+
+/* GRID */
 
 .grid{
 display:grid;
@@ -221,6 +423,8 @@ gap:24px;
 margin-top:50px;
 }
 
+/* CARDS */
+
 .card{
 padding:30px;
 
@@ -230,22 +434,57 @@ background:rgba(255,255,255,0.04);
 
 border:1px solid rgba(255,255,255,0.08);
 
-backdrop-filter:blur(10px);
+backdrop-filter:blur(14px);
 
-transition:0.3s;
+transition:0.4s;
+
+position:relative;
+overflow:hidden;
+}
+
+.card::before{
+content:'';
+position:absolute;
+inset:0;
+
+background:
+linear-gradient(
+135deg,
+rgba(0,240,255,0.08),
+transparent,
+rgba(255,45,149,0.08)
+);
+
+opacity:0;
+transition:0.4s;
+}
+
+.card:hover::before{
+opacity:1;
 }
 
 .card:hover{
-transform:translateY(-6px);
+transform:translateY(-8px);
 
-border-color:rgba(0,240,255,0.25);
+border-color:rgba(0,240,255,0.3);
 
-box-shadow:0 0 30px rgba(0,240,255,0.12);
+box-shadow:
+0 0 35px rgba(0,240,255,0.15),
+0 0 60px rgba(159,77,255,0.08);
 }
 
 .card p{
 max-width:none;
+position:relative;
+z-index:1;
 }
+
+.card h2{
+position:relative;
+z-index:1;
+}
+
+/* SPECIAL COLORS */
 
 .dragon{
 border-color:rgba(255,120,0,0.4);
@@ -271,6 +510,8 @@ border-color:rgba(0,240,255,0.4);
 border-color:rgba(120,220,255,0.45);
 }
 
+/* FOOTER */
+
 footer{
 padding:40px;
 
@@ -280,6 +521,8 @@ border-top:1px solid rgba(255,255,255,0.06);
 
 color:#8d96b8;
 }
+
+/* MOBILE */
 
 @media(max-width:768px){
 
@@ -302,6 +545,11 @@ h1{
 font-size:3rem;
 }
 
+.logo-wrap{
+flex-direction:column;
+text-align:center;
+}
+
 }
 
 </style>
@@ -311,10 +559,29 @@ font-size:3rem;
 
 <div class="bg-grid"></div>
 
+<div class="particles">
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+
 <header>
 
-<div class="logo">
-NEO SLICE ARENA
+<div class="logo-wrap">
+
+<img src="3a658db9-ee6e-470f-bbc4-9aaebb6f92ab.png" alt="Neon Slice Arena Logo">
+
+<div class="logo-text">
+NEON SLICE<br>ARENA
+</div>
+
 </div>
 
 <nav>
@@ -324,8 +591,6 @@ NEO SLICE ARENA
 </nav>
 
 </header>
-
-<!-- HERO -->
 
 <section class="hero" id="home">
 
@@ -363,8 +628,6 @@ Privacy Policy
 </div>
 
 </section>
-
-<!-- FEATURES -->
 
 <section class="section">
 
@@ -414,8 +677,6 @@ and cinematic arcade chaos.
 
 </section>
 
-<!-- BEGINNER TIPS -->
-
 <section class="section" id="tips">
 
 <div class="container">
@@ -427,10 +688,6 @@ BEGINNER GUIDE
 <h1>
 MASTER THE EMOJIS
 </h1>
-
-<p>
-Learn every special emoji ability and survive longer inside the arena.
-</p>
 
 <div class="grid">
 
@@ -530,8 +787,6 @@ giving you more time to slice extra emojis safely.
 
 </section>
 
-<!-- PRIVACY -->
-
 <section class="section" id="privacy">
 
 <div class="container">
@@ -550,7 +805,7 @@ PRIVACY POLICY
 <h2>Information Collection</h2>
 
 <p>
-Neo Slice Arena may collect gameplay statistics,
+Neon Slice Arena may collect gameplay statistics,
 device information, crash reports,
 analytics data, and advertising identifiers.
 </p>
@@ -578,7 +833,7 @@ to improve gameplay and application performance.
 <h2>Children's Privacy</h2>
 
 <p>
-Neo Slice Arena is not directed toward children
+Neon Slice Arena is not directed toward children
 under applicable local age requirements.
 </p>
 </div>
@@ -610,7 +865,7 @@ appsbymuj@gmail.com
 <footer>
 
 <p>
-© 2026 Manzi Kevin — All Rights Reserved
+© 2026 Neon Slice Arena — All Rights Reserved
 </p>
 
 </footer>
