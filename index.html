@@ -34,7 +34,6 @@ scroll-behavior:smooth;
 
 body{
 font-family:'Inter',sans-serif;
-
 background:
 radial-gradient(circle at top left, rgba(0,240,255,0.14), transparent 30%),
 radial-gradient(circle at bottom right, rgba(159,77,255,0.18), transparent 30%),
@@ -44,6 +43,31 @@ color:var(--text);
 overflow-x:hidden;
 min-height:100vh;
 position:relative;
+}
+
+/* ANIMATED GRID */
+
+.bg-grid{
+position:fixed;
+inset:0;
+
+background-image:
+linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+
+background-size:40px 40px;
+z-index:-3;
+
+animation:gridMove 20s linear infinite;
+}
+
+@keyframes gridMove{
+0%{
+transform:translateY(0px);
+}
+100%{
+transform:translateY(40px);
+}
 }
 
 /* PARTICLES */
@@ -129,20 +153,6 @@ opacity:0;
 
 }
 
-/* GRID */
-
-.bg-grid{
-position:fixed;
-inset:0;
-
-background-image:
-linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-
-background-size:40px 40px;
-z-index:-3;
-}
-
 /* GLOWING ORBS */
 
 .orb{
@@ -209,44 +219,46 @@ z-index:1000;
 .logo-wrap{
 display:flex;
 align-items:center;
-gap:16px;
+gap:18px;
 }
 
-.logo-wrap img{
-width:72px;
-height:72px;
+.logo-image{
+width:82px;
+height:82px;
 object-fit:contain;
 
 filter:
-drop-shadow(0 0 18px rgba(0,240,255,0.45));
+drop-shadow(0 0 22px rgba(0,240,255,0.7));
 
-animation:pulse 3s infinite ease-in-out;
+animation:floatLogo 4s ease-in-out infinite;
 }
 
-@keyframes pulse{
+@keyframes floatLogo{
 
 0%{
-transform:scale(1);
+transform:translateY(0px) rotate(0deg);
 }
 
 50%{
-transform:scale(1.08);
+transform:translateY(-8px) rotate(2deg);
 }
 
 100%{
-transform:scale(1);
+transform:translateY(0px) rotate(0deg);
 }
 
 }
 
 .logo-text{
 font-family:'Orbitron',sans-serif;
-font-size:1.3rem;
+font-size:1.4rem;
 font-weight:900;
 letter-spacing:2px;
 color:var(--cyan);
 line-height:1.3;
 }
+
+/* NAV */
 
 nav{
 display:flex;
@@ -358,30 +370,25 @@ margin-bottom:14px;
 .hero p,
 .section p{
 max-width:800px;
-
 color:var(--muted);
-
 line-height:1.8;
 }
+
+/* BUTTONS */
 
 .hero-buttons{
 display:flex;
 gap:18px;
 flex-wrap:wrap;
-
 margin-top:40px;
 }
 
 .primary-btn,
 .secondary-btn{
 padding:16px 28px;
-
 border-radius:14px;
-
 font-weight:600;
-
 text-decoration:none;
-
 transition:0.3s;
 }
 
@@ -484,7 +491,7 @@ position:relative;
 z-index:1;
 }
 
-/* SPECIAL COLORS */
+/* SPECIAL CARD COLORS */
 
 .dragon{
 border-color:rgba(255,120,0,0.4);
@@ -514,11 +521,8 @@ border-color:rgba(120,220,255,0.45);
 
 footer{
 padding:40px;
-
 text-align:center;
-
 border-top:1px solid rgba(255,255,255,0.06);
-
 color:#8d96b8;
 }
 
@@ -576,7 +580,10 @@ text-align:center;
 
 <div class="logo-wrap">
 
-<img src="3a658db9-ee6e-470f-bbc4-9aaebb6f92ab.png" alt="Neon Slice Arena Logo">
+<!-- IMPORTANT -->
+<!-- Upload your image as logo.png in the SAME GitHub folder -->
+
+<img src="logo.png" alt="Neon Slice Arena Logo" class="logo-image">
 
 <div class="logo-text">
 NEON SLICE<br>ARENA
