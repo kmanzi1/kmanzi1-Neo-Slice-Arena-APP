@@ -1,193 +1,474 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Neo Slice Arena - Privacy Policy</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neo Slice Arena — Privacy Policy</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #090916, #1b0033);
-      color: white;
-      line-height: 1.7;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #070812;
+      --card: rgba(17, 20, 40, 0.72);
+      --border: rgba(255,255,255,0.08);
+
+      --cyan: #00f0ff;
+      --purple: #bc13fe;
+      --pink: #ff2d95;
+      --text: #f2f5ff;
+      --muted: #aab3d0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(0,240,255,0.15), transparent 30%),
+        radial-gradient(circle at top right, rgba(188,19,254,0.18), transparent 30%),
+        radial-gradient(circle at bottom center, rgba(255,45,149,0.12), transparent 35%),
+        var(--bg);
+
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Animated background glow */
+    body::before {
+      content: "";
+      position: fixed;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(0,240,255,0.08), transparent 70%);
+      top: -200px;
+      left: -200px;
+      animation: floatGlow 8s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(188,19,254,0.08), transparent 70%);
+      bottom: -250px;
+      right: -250px;
+      animation: floatGlow2 10s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+
+    @keyframes floatGlow {
+      from {
+        transform: translateY(0px);
+      }
+      to {
+        transform: translateY(40px);
+      }
+    }
+
+    @keyframes floatGlow2 {
+      from {
+        transform: translateX(0px);
+      }
+      to {
+        transform: translateX(-40px);
+      }
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      padding: 60px 20px;
     }
 
     .container {
-      max-width: 950px;
-      margin: 60px auto;
-      padding: 45px;
+      max-width: 1050px;
+      margin: auto;
+      padding: 60px;
+      border-radius: 32px;
+
+      background: var(--card);
+      backdrop-filter: blur(18px);
+
+      border: 1px solid var(--border);
+
+      box-shadow:
+        0 0 50px rgba(0,240,255,0.08),
+        0 0 120px rgba(188,19,254,0.08);
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 999px;
       background: rgba(255,255,255,0.05);
-      border-radius: 24px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 0 40px rgba(0,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--cyan);
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      backdrop-filter: blur(8px);
     }
 
     h1 {
-      text-align: center;
-      font-size: 3rem;
-      color: #00f7ff;
-      text-shadow: 0 0 12px #00f7ff;
-      margin-bottom: 10px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 1;
+      margin-bottom: 20px;
+
+      background: linear-gradient(
+        90deg,
+        var(--cyan),
+        #ffffff,
+        var(--purple),
+        var(--pink)
+      );
+
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      text-shadow:
+        0 0 18px rgba(0,240,255,0.25),
+        0 0 28px rgba(188,19,254,0.2);
     }
 
     .subtitle {
-      text-align: center;
-      color: #bbbbbb;
-      margin-bottom: 40px;
+      max-width: 720px;
+      margin: auto;
+      color: var(--muted);
+      font-size: 1.1rem;
+      line-height: 1.8;
     }
 
-    h2 {
-      color: #ff4dff;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
       margin-top: 40px;
     }
 
-    p, li {
-      color: #dddddd;
-      font-size: 1.05rem;
+    .card {
+      position: relative;
+      padding: 28px;
+      border-radius: 24px;
+      overflow: hidden;
+
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+
+      transition: 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0,240,255,0.35);
+
+      box-shadow:
+        0 0 20px rgba(0,240,255,0.08),
+        0 0 60px rgba(188,19,254,0.08);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(0,240,255,0.08),
+          transparent,
+          rgba(188,19,254,0.08)
+        );
+      opacity: 0;
+      transition: 0.4s;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--cyan);
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    p,
+    li {
+      color: #d9e0ff;
+      font-size: 1rem;
+      line-height: 1.9;
+      position: relative;
+      z-index: 1;
     }
 
     ul {
-      padding-left: 22px;
+      padding-left: 20px;
+      margin-top: 12px;
     }
 
-    a {
-      color: #00f7ff;
-      text-decoration: none;
-    }
-
-    .footer {
-      margin-top: 60px;
-      text-align: center;
-      color: #777;
-      font-size: 0.95rem;
+    li {
+      margin-bottom: 10px;
     }
 
     .highlight {
-      color: #00f7ff;
+      color: var(--cyan);
+      font-weight: 600;
+    }
+
+    a {
+      color: var(--cyan);
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    a:hover {
+      color: white;
+      text-shadow: 0 0 12px var(--cyan);
+    }
+
+    .copyright {
+      margin-top: 60px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+
+      text-align: center;
+      color: #8d96b8;
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    .footer-logo {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--cyan);
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+      letter-spacing: 2px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 32px 24px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 3rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<div class="container">
+  <div class="wrapper">
 
-  <h1>NEO SLICE ARENA</h1>
+    <div class="container">
 
-  <p class="subtitle">
-    Privacy Policy & Legal Information
-  </p>
+      <!-- HERO -->
+      <div class="hero">
 
-  <p>
-    Welcome to <span class="highlight">Neo Slice Arena</span>.
-    By downloading or using this application, you agree to the terms outlined in this Privacy Policy and Legal Notice.
-  </p>
+        <div class="badge">
+          Official Legal Documentation
+        </div>
 
-  <h2>Information We Collect</h2>
+        <h1>NEO SLICE ARENA</h1>
 
-  <p>
-    The game may automatically collect limited non-personal information including:
-  </p>
+        <p class="subtitle">
+          Privacy Policy, Legal Notice, Intellectual Property Protection,
+          and User Terms for the Neo Slice Arena gaming experience.
+        </p>
 
-  <ul>
-    <li>Device type and operating system</li>
-    <li>Gameplay statistics and progress</li>
-    <li>Crash reports and diagnostics</li>
-    <li>Advertising identifiers</li>
-    <li>General analytics data</li>
-  </ul>
+      </div>
 
-  <p>
-    We do not knowingly collect sensitive personal information.
-  </p>
+      <!-- GRID -->
+      <div class="grid">
 
-  <h2>Advertising</h2>
+        <div class="card">
+          <h2>Information We Collect</h2>
 
-  <p>
-    Neo Slice Arena may display advertisements provided by third-party services such as Google AdMob or similar providers. These services may use cookies, identifiers, or analytics technologies to provide personalized or non-personalized advertisements.
-  </p>
+          <p>
+            Neo Slice Arena may automatically collect limited non-personal data including:
+          </p>
 
-  <h2>Analytics</h2>
+          <ul>
+            <li>Device type and operating system</li>
+            <li>Gameplay progress and statistics</li>
+            <li>Crash reports and diagnostics</li>
+            <li>Advertising identifiers</li>
+            <li>General analytics information</li>
+          </ul>
 
-  <p>
-    We may use analytics services including Firebase Analytics or similar tools to improve gameplay experience, application stability, performance, and feature development.
-  </p>
+          <p>
+            We do not knowingly collect sensitive personal information.
+          </p>
+        </div>
 
-  <h2>Third-Party Services</h2>
+        <div class="card">
+          <h2>Advertising</h2>
 
-  <ul>
-    <li>Apple App Store</li>
-    <li>Google Play Services</li>
-    <li>Google AdMob</li>
-    <li>Firebase Analytics</li>
-  </ul>
+          <p>
+            The game may display advertisements provided by third-party
+            services such as Google AdMob and similar platforms. These
+            services may use cookies, identifiers, and analytics technologies
+            to provide personalized or non-personalized advertisements.
+          </p>
+        </div>
 
-  <h2>Children's Privacy</h2>
+        <div class="card">
+          <h2>Analytics</h2>
 
-  <p>
-    Neo Slice Arena is not directed toward children under the age required by local laws. We do not knowingly collect personal information from children.
-  </p>
+          <p>
+            Analytics services such as Firebase Analytics may be used to
+            improve gameplay experience, optimize performance, monitor
+            stability, and guide future feature development.
+          </p>
+        </div>
 
-  <h2>Intellectual Property</h2>
+        <div class="card">
+          <h2>Third-Party Services</h2>
 
-  <p>
-    All content included in Neo Slice Arena, including but not limited to artwork, graphics, game mechanics, branding, logos, audio, animations, designs, source code, and visual elements are the intellectual property of Neo Slice Arena and its creator unless otherwise stated.
-  </p>
+          <ul>
+            <li>Apple App Store</li>
+            <li>Google Play Services</li>
+            <li>Google AdMob</li>
+            <li>Firebase Analytics</li>
+          </ul>
+        </div>
 
-  <p>
-    Unauthorized copying, reproduction, redistribution, reverse engineering, resale, modification, or exploitation of any part of the game is strictly prohibited.
-  </p>
+        <div class="card">
+          <h2>Children's Privacy</h2>
 
-  <h2>Copyright Notice</h2>
+          <p>
+            Neo Slice Arena is not directed toward children under the age
+            required by local laws. We do not knowingly collect personal
+            information from children.
+          </p>
+        </div>
 
-  <p>
-    © 2026 Manzi Kevin. All rights reserved.
-  </p>
+        <div class="card">
+          <h2>Intellectual Property</h2>
 
-  <p>
-    All trademarks, logos, and related assets are protected by applicable copyright and intellectual property laws.
-  </p>
+          <p>
+            All artwork, graphics, branding, animations, audio, gameplay
+            systems, visual assets, source code, and designs are the
+            intellectual property of
+            <span class="highlight">Neo Slice Arena</span>
+            and its creator unless otherwise stated.
+          </p>
+        </div>
 
-  <h2>User Conduct</h2>
+        <div class="card">
+          <h2>Copyright Notice</h2>
 
-  <p>
-    Users agree not to misuse the application, exploit bugs, interfere with servers or services, attempt unauthorized access, or engage in fraudulent or abusive behavior.
-  </p>
+          <p>
+            © 2026 Manzi Kevin. All rights reserved.
+          </p>
 
-  <h2>Disclaimer of Warranties</h2>
+          <p>
+            Unauthorized reproduction, redistribution, resale, modification,
+            reverse engineering, or exploitation of any game asset is strictly prohibited.
+          </p>
+        </div>
 
-  <p>
-    Neo Slice Arena is provided "as is" and "as available" without warranties of any kind, express or implied. We do not guarantee uninterrupted availability, error-free operation, or compatibility with all devices.
-  </p>
+        <div class="card">
+          <h2>User Conduct</h2>
 
-  <h2>Limitation of Liability</h2>
+          <p>
+            Users agree not to misuse the application, exploit bugs,
+            interfere with services, attempt unauthorized access,
+            or engage in fraudulent or abusive behavior.
+          </p>
+        </div>
 
-  <p>
-    To the maximum extent permitted by law, Neo Slice Arena and its creator shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from use of the application.
-  </p>
+        <div class="card">
+          <h2>Disclaimer of Warranties</h2>
 
-  <h2>Policy Changes</h2>
+          <p>
+            Neo Slice Arena is provided “as is” and “as available”
+            without warranties of any kind, express or implied.
+          </p>
+        </div>
 
-  <p>
-    This Privacy Policy and Legal Notice may be updated periodically. Continued use of the application after changes constitutes acceptance of those changes.
-  </p>
+        <div class="card">
+          <h2>Limitation of Liability</h2>
 
-  <h2>Contact</h2>
+          <p>
+            To the maximum extent permitted by law, Neo Slice Arena
+            and its creator shall not be liable for indirect,
+            incidental, consequential, or punitive damages arising
+            from use of the application.
+          </p>
+        </div>
 
-  <p>
-    Email:
-    <a href="mailto:appsbymuj@gmail.com">
-      appsbymuj@gmail.com
-    </a>
-  </p>
+        <div class="card">
+          <h2>Policy Changes</h2>
 
-  <div class="footer">
-    © 2026 Manzi Kevin— All Rights Reserved
+          <p>
+            This Privacy Policy and Legal Notice may be updated periodically.
+            Continued use of the application after changes constitutes acceptance
+            of those updates.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Contact</h2>
+
+          <p>
+            Email:
+            <br><br>
+
+            <a href="mailto:appsbymuj@gmail.com">
+              appsbymuj@gmail.com
+            </a>
+          </p>
+        </div>
+
+      </div>
+
+      <!-- FOOTER -->
+      <div class="copyright">
+
+        <div class="footer-logo">
+          NEO SLICE ARENA
+        </div>
+
+        © 2026 Manzi Kevin — All Rights Reserved
+        <br>
+        Designed for a futuristic competitive gaming experience.
+
+      </div>
+
+    </div>
+
   </div>
-
-</div>
 
 </body>
 </html>
