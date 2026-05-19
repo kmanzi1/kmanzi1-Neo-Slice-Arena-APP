@@ -1,474 +1,619 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Neo Slice Arena — Privacy Policy</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Neo Slice Arena</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    :root {
-      --bg: #070812;
-      --card: rgba(17, 20, 40, 0.72);
-      --border: rgba(255,255,255,0.08);
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-      --cyan: #00f0ff;
-      --purple: #bc13fe;
-      --pink: #ff2d95;
-      --text: #f2f5ff;
-      --muted: #aab3d0;
-    }
+<style>
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(0,240,255,0.15), transparent 30%),
-        radial-gradient(circle at top right, rgba(188,19,254,0.18), transparent 30%),
-        radial-gradient(circle at bottom center, rgba(255,45,149,0.12), transparent 35%),
-        var(--bg);
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-      color: var(--text);
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-    }
+:root{
+--bg:#050816;
+--cyan:#00f0ff;
+--purple:#9f4dff;
+--pink:#ff2d95;
+--text:#f5f7ff;
+--muted:#a4acc7;
+}
 
-    /* Animated background glow */
-    body::before {
-      content: "";
-      position: fixed;
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(0,240,255,0.08), transparent 70%);
-      top: -200px;
-      left: -200px;
-      animation: floatGlow 8s ease-in-out infinite alternate;
-      z-index: 0;
-    }
+html{
+scroll-behavior:smooth;
+}
 
-    body::after {
-      content: "";
-      position: fixed;
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(188,19,254,0.08), transparent 70%);
-      bottom: -250px;
-      right: -250px;
-      animation: floatGlow2 10s ease-in-out infinite alternate;
-      z-index: 0;
-    }
+body{
+font-family:'Inter',sans-serif;
 
-    @keyframes floatGlow {
-      from {
-        transform: translateY(0px);
-      }
-      to {
-        transform: translateY(40px);
-      }
-    }
+background:
+radial-gradient(circle at top left, rgba(0,240,255,0.12), transparent 30%),
+radial-gradient(circle at bottom right, rgba(159,77,255,0.16), transparent 30%),
+var(--bg);
 
-    @keyframes floatGlow2 {
-      from {
-        transform: translateX(0px);
-      }
-      to {
-        transform: translateX(-40px);
-      }
-    }
+color:var(--text);
+overflow-x:hidden;
+min-height:100vh;
+}
 
-    .wrapper {
-      position: relative;
-      z-index: 1;
-      padding: 60px 20px;
-    }
+.bg-grid{
+position:fixed;
+inset:0;
 
-    .container {
-      max-width: 1050px;
-      margin: auto;
-      padding: 60px;
-      border-radius: 32px;
+background-image:
+linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
 
-      background: var(--card);
-      backdrop-filter: blur(18px);
+background-size:40px 40px;
+z-index:-1;
+}
 
-      border: 1px solid var(--border);
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
 
-      box-shadow:
-        0 0 50px rgba(0,240,255,0.08),
-        0 0 120px rgba(188,19,254,0.08);
-    }
+padding:28px 10%;
 
-    .hero {
-      text-align: center;
-      margin-bottom: 60px;
-    }
+position:sticky;
+top:0;
 
-    .badge {
-      display: inline-block;
-      padding: 10px 18px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: var(--cyan);
-      font-size: 0.85rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-      backdrop-filter: blur(8px);
-    }
+background:rgba(5,8,22,0.75);
 
-    h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(3rem, 7vw, 5.5rem);
-      line-height: 1;
-      margin-bottom: 20px;
+backdrop-filter:blur(12px);
 
-      background: linear-gradient(
-        90deg,
-        var(--cyan),
-        #ffffff,
-        var(--purple),
-        var(--pink)
-      );
+z-index:1000;
+}
 
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+.logo{
+font-family:'Orbitron',sans-serif;
+font-size:1.4rem;
+font-weight:900;
+letter-spacing:2px;
+color:var(--cyan);
+}
 
-      text-shadow:
-        0 0 18px rgba(0,240,255,0.25),
-        0 0 28px rgba(188,19,254,0.2);
-    }
+nav{
+display:flex;
+gap:28px;
+}
 
-    .subtitle {
-      max-width: 720px;
-      margin: auto;
-      color: var(--muted);
-      font-size: 1.1rem;
-      line-height: 1.8;
-    }
+nav a{
+color:white;
+text-decoration:none;
+transition:0.3s;
+font-weight:500;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 24px;
-      margin-top: 40px;
-    }
+nav a:hover{
+color:var(--cyan);
+text-shadow:0 0 12px var(--cyan);
+}
 
-    .card {
-      position: relative;
-      padding: 28px;
-      border-radius: 24px;
-      overflow: hidden;
+.hero,
+.section{
+padding:100px 10%;
+}
 
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
+.hero-content,
+.container{
+max-width:1200px;
+margin:auto;
+}
 
-      transition: 0.4s ease;
-    }
+.badge{
+display:inline-block;
 
-    .card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(0,240,255,0.35);
+padding:10px 18px;
 
-      box-shadow:
-        0 0 20px rgba(0,240,255,0.08),
-        0 0 60px rgba(188,19,254,0.08);
-    }
+border-radius:999px;
 
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(
-          135deg,
-          rgba(0,240,255,0.08),
-          transparent,
-          rgba(188,19,254,0.08)
-        );
-      opacity: 0;
-      transition: 0.4s;
-    }
+border:1px solid rgba(255,255,255,0.08);
 
-    .card:hover::before {
-      opacity: 1;
-    }
+background:rgba(255,255,255,0.04);
 
-    h2 {
-      font-family: 'Orbitron', sans-serif;
-      color: var(--cyan);
-      font-size: 1.2rem;
-      margin-bottom: 16px;
-      position: relative;
-      z-index: 1;
-    }
+color:var(--cyan);
 
-    p,
-    li {
-      color: #d9e0ff;
-      font-size: 1rem;
-      line-height: 1.9;
-      position: relative;
-      z-index: 1;
-    }
+font-size:0.85rem;
+letter-spacing:2px;
 
-    ul {
-      padding-left: 20px;
-      margin-top: 12px;
-    }
+margin-bottom:24px;
+}
 
-    li {
-      margin-bottom: 10px;
-    }
+h1{
+font-family:'Orbitron',sans-serif;
 
-    .highlight {
-      color: var(--cyan);
-      font-weight: 600;
-    }
+font-size:clamp(3rem,8vw,6rem);
 
-    a {
-      color: var(--cyan);
-      text-decoration: none;
-      transition: 0.3s ease;
-    }
+line-height:1;
 
-    a:hover {
-      color: white;
-      text-shadow: 0 0 12px var(--cyan);
-    }
+margin-bottom:24px;
 
-    .copyright {
-      margin-top: 60px;
-      padding-top: 30px;
-      border-top: 1px solid rgba(255,255,255,0.08);
+background:linear-gradient(
+90deg,
+var(--cyan),
+white,
+var(--pink)
+);
 
-      text-align: center;
-      color: #8d96b8;
-      font-size: 0.95rem;
-      line-height: 1.8;
-    }
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
 
-    .footer-logo {
-      font-family: 'Orbitron', sans-serif;
-      color: var(--cyan);
-      font-size: 1.2rem;
-      margin-bottom: 12px;
-      letter-spacing: 2px;
-    }
+h2{
+font-family:'Orbitron',sans-serif;
+color:var(--cyan);
+margin-bottom:14px;
+}
 
-    @media (max-width: 768px) {
-      .container {
-        padding: 32px 24px;
-      }
+.hero p,
+.section p{
+max-width:800px;
 
-      .grid {
-        grid-template-columns: 1fr;
-      }
+color:var(--muted);
 
-      h1 {
-        font-size: 3rem;
-      }
+line-height:1.8;
+}
 
-      .subtitle {
-        font-size: 1rem;
-      }
-    }
-  </style>
+.hero-buttons{
+display:flex;
+gap:18px;
+flex-wrap:wrap;
+
+margin-top:40px;
+}
+
+.primary-btn,
+.secondary-btn{
+padding:16px 28px;
+
+border-radius:14px;
+
+font-weight:600;
+
+text-decoration:none;
+
+transition:0.3s;
+}
+
+.primary-btn{
+background:linear-gradient(
+90deg,
+var(--cyan),
+var(--purple)
+);
+
+color:black;
+}
+
+.primary-btn:hover{
+transform:translateY(-4px);
+
+box-shadow:0 0 30px rgba(0,240,255,0.4);
+}
+
+.secondary-btn{
+border:1px solid rgba(255,255,255,0.1);
+color:white;
+}
+
+.secondary-btn:hover{
+border-color:var(--cyan);
+}
+
+.grid{
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(280px,1fr));
+
+gap:24px;
+
+margin-top:50px;
+}
+
+.card{
+padding:30px;
+
+border-radius:24px;
+
+background:rgba(255,255,255,0.04);
+
+border:1px solid rgba(255,255,255,0.08);
+
+backdrop-filter:blur(10px);
+
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+
+border-color:rgba(0,240,255,0.25);
+
+box-shadow:0 0 30px rgba(0,240,255,0.12);
+}
+
+.card p{
+max-width:none;
+}
+
+.dragon{
+border-color:rgba(255,120,0,0.4);
+}
+
+.danger{
+border-color:rgba(255,0,90,0.4);
+}
+
+.heal{
+border-color:rgba(0,255,180,0.4);
+}
+
+.split{
+border-color:rgba(255,255,0,0.25);
+}
+
+.lightning{
+border-color:rgba(0,240,255,0.4);
+}
+
+.ice{
+border-color:rgba(120,220,255,0.45);
+}
+
+footer{
+padding:40px;
+
+text-align:center;
+
+border-top:1px solid rgba(255,255,255,0.06);
+
+color:#8d96b8;
+}
+
+@media(max-width:768px){
+
+header{
+flex-direction:column;
+gap:20px;
+}
+
+nav{
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.hero,
+.section{
+padding:80px 8%;
+}
+
+h1{
+font-size:3rem;
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
-  <div class="wrapper">
+<div class="bg-grid"></div>
 
-    <div class="container">
+<header>
 
-      <!-- HERO -->
-      <div class="hero">
+<div class="logo">
+NEO SLICE ARENA
+</div>
 
-        <div class="badge">
-          Official Legal Documentation
-        </div>
+<nav>
+<a href="#home">Home</a>
+<a href="#tips">Beginner Tips</a>
+<a href="#privacy">Privacy</a>
+</nav>
 
-        <h1>NEO SLICE ARENA</h1>
+</header>
 
-        <p class="subtitle">
-          Privacy Policy, Legal Notice, Intellectual Property Protection,
-          and User Terms for the Neo Slice Arena gaming experience.
-        </p>
+<!-- HERO -->
 
-      </div>
+<section class="hero" id="home">
 
-      <!-- GRID -->
-      <div class="grid">
+<div class="hero-content">
 
-        <div class="card">
-          <h2>Information We Collect</h2>
+<div class="badge">
+FUTURISTIC SLICE COMBAT
+</div>
 
-          <p>
-            Neo Slice Arena may automatically collect limited non-personal data including:
-          </p>
+<h1>
+SLICE.
+SURVIVE.
+DOMINATE.
+</h1>
 
-          <ul>
-            <li>Device type and operating system</li>
-            <li>Gameplay progress and statistics</li>
-            <li>Crash reports and diagnostics</li>
-            <li>Advertising identifiers</li>
-            <li>General analytics information</li>
-          </ul>
+<p>
+Enter the neon battlefield where reflexes decide survival.
+Destroy emoji chaos, unleash insane combos,
+master powerful abilities,
+and dominate the arena in the ultimate futuristic slicing experience.
+</p>
 
-          <p>
-            We do not knowingly collect sensitive personal information.
-          </p>
-        </div>
+<div class="hero-buttons">
 
-        <div class="card">
-          <h2>Advertising</h2>
+<a href="#tips" class="primary-btn">
+View Beginner Tips
+</a>
 
-          <p>
-            The game may display advertisements provided by third-party
-            services such as Google AdMob and similar platforms. These
-            services may use cookies, identifiers, and analytics technologies
-            to provide personalized or non-personalized advertisements.
-          </p>
-        </div>
+<a href="#privacy" class="secondary-btn">
+Privacy Policy
+</a>
 
-        <div class="card">
-          <h2>Analytics</h2>
+</div>
 
-          <p>
-            Analytics services such as Firebase Analytics may be used to
-            improve gameplay experience, optimize performance, monitor
-            stability, and guide future feature development.
-          </p>
-        </div>
+</div>
 
-        <div class="card">
-          <h2>Third-Party Services</h2>
+</section>
 
-          <ul>
-            <li>Apple App Store</li>
-            <li>Google Play Services</li>
-            <li>Google AdMob</li>
-            <li>Firebase Analytics</li>
-          </ul>
-        </div>
+<!-- FEATURES -->
 
-        <div class="card">
-          <h2>Children's Privacy</h2>
+<section class="section">
 
-          <p>
-            Neo Slice Arena is not directed toward children under the age
-            required by local laws. We do not knowingly collect personal
-            information from children.
-          </p>
-        </div>
+<div class="container">
 
-        <div class="card">
-          <h2>Intellectual Property</h2>
+<div class="badge">
+GAME FEATURES
+</div>
 
-          <p>
-            All artwork, graphics, branding, animations, audio, gameplay
-            systems, visual assets, source code, and designs are the
-            intellectual property of
-            <span class="highlight">Neo Slice Arena</span>
-            and its creator unless otherwise stated.
-          </p>
-        </div>
+<h1>
+WELCOME TO THE ARENA
+</h1>
 
-        <div class="card">
-          <h2>Copyright Notice</h2>
+<div class="grid">
 
-          <p>
-            © 2026 Manzi Kevin. All rights reserved.
-          </p>
+<div class="card">
+<h2>⚡ Fast Arcade Action</h2>
 
-          <p>
-            Unauthorized reproduction, redistribution, resale, modification,
-            reverse engineering, or exploitation of any game asset is strictly prohibited.
-          </p>
-        </div>
+<p>
+Every second gets faster.
+Precision and reaction speed are everything.
+</p>
+</div>
 
-        <div class="card">
-          <h2>User Conduct</h2>
+<div class="card">
+<h2>🔥 Combo Slicing</h2>
 
-          <p>
-            Users agree not to misuse the application, exploit bugs,
-            interfere with services, attempt unauthorized access,
-            or engage in fraudulent or abusive behavior.
-          </p>
-        </div>
+<p>
+Chain multiple slices together to boost your score
+and dominate the leaderboard.
+</p>
+</div>
 
-        <div class="card">
-          <h2>Disclaimer of Warranties</h2>
+<div class="card">
+<h2>🌌 Cyberpunk Visuals</h2>
 
-          <p>
-            Neo Slice Arena is provided “as is” and “as available”
-            without warranties of any kind, express or implied.
-          </p>
-        </div>
+<p>
+Experience glowing neon effects,
+futuristic energy,
+and cinematic arcade chaos.
+</p>
+</div>
 
-        <div class="card">
-          <h2>Limitation of Liability</h2>
+</div>
 
-          <p>
-            To the maximum extent permitted by law, Neo Slice Arena
-            and its creator shall not be liable for indirect,
-            incidental, consequential, or punitive damages arising
-            from use of the application.
-          </p>
-        </div>
+</div>
 
-        <div class="card">
-          <h2>Policy Changes</h2>
+</section>
 
-          <p>
-            This Privacy Policy and Legal Notice may be updated periodically.
-            Continued use of the application after changes constitutes acceptance
-            of those updates.
-          </p>
-        </div>
+<!-- BEGINNER TIPS -->
 
-        <div class="card">
-          <h2>Contact</h2>
+<section class="section" id="tips">
 
-          <p>
-            Email:
-            <br><br>
+<div class="container">
 
-            <a href="mailto:appsbymuj@gmail.com">
-              appsbymuj@gmail.com
-            </a>
-          </p>
-        </div>
+<div class="badge">
+BEGINNER GUIDE
+</div>
 
-      </div>
+<h1>
+MASTER THE EMOJIS
+</h1>
 
-      <!-- FOOTER -->
-      <div class="copyright">
+<p>
+Learn every special emoji ability and survive longer inside the arena.
+</p>
 
-        <div class="footer-logo">
-          NEO SLICE ARENA
-        </div>
+<div class="grid">
 
-        © 2026 Manzi Kevin — All Rights Reserved
-        <br>
-        Designed for a futuristic competitive gaming experience.
+<div class="card dragon">
+<h2>🐉 Dragon Emoji</h2>
 
-      </div>
+<p>
+The Dragon destroys every emoji currently on the screen.
+Use it when the arena becomes overloaded.
+</p>
+</div>
 
-    </div>
+<div class="card danger">
+<h2>💣 Bomb Emoji</h2>
 
-  </div>
+<p>
+The Bomb is deadly.
+Slicing it removes one life instantly.
+</p>
+</div>
+
+<div class="card danger">
+<h2>👹 Oni Emoji</h2>
+
+<p>
+The Oni also removes one life if sliced.
+Avoid it at all costs.
+</p>
+</div>
+
+<div class="card split">
+<h2>🚗 Car Emoji</h2>
+
+<p>
+The Car splits into more emojis when sliced.
+Slice all of them for bonus points.
+</p>
+</div>
+
+<div class="card split">
+<h2>🥑 Avocado Emoji</h2>
+
+<p>
+The Avocado duplicates into more targets.
+Clear them quickly to maximize score.
+</p>
+</div>
+
+<div class="card split">
+<h2>🤡 Clown Emoji</h2>
+
+<p>
+The Clown multiplies after slicing.
+Keep slicing every clone for extra points.
+</p>
+</div>
+
+<div class="card heal">
+<h2>👼 Baby Angel Emoji</h2>
+
+<p>
+Restores one life when sliced.
+Never miss it.
+</p>
+</div>
+
+<div class="card heal">
+<h2>🪽 Wing Emoji</h2>
+
+<p>
+Wings also restore your life.
+Slice them fast before they disappear.
+</p>
+</div>
+
+<div class="card lightning">
+<h2>⚡ Lightning Emoji</h2>
+
+<p>
+The Lightning emoji zaps through the arena
+with electric chaos.
+</p>
+</div>
+
+<div class="card ice">
+<h2>🧊 Ice Cube Emoji</h2>
+
+<p>
+The Ice Cube freezes the screen temporarily,
+giving you more time to slice extra emojis safely.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PRIVACY -->
+
+<section class="section" id="privacy">
+
+<div class="container">
+
+<div class="badge">
+LEGAL & PRIVACY
+</div>
+
+<h1>
+PRIVACY POLICY
+</h1>
+
+<div class="grid">
+
+<div class="card">
+<h2>Information Collection</h2>
+
+<p>
+Neo Slice Arena may collect gameplay statistics,
+device information, crash reports,
+analytics data, and advertising identifiers.
+</p>
+</div>
+
+<div class="card">
+<h2>Advertising</h2>
+
+<p>
+Third-party advertising providers such as Google AdMob
+may display advertisements inside the game.
+</p>
+</div>
+
+<div class="card">
+<h2>Analytics</h2>
+
+<p>
+Firebase Analytics and similar services may be used
+to improve gameplay and application performance.
+</p>
+</div>
+
+<div class="card">
+<h2>Children's Privacy</h2>
+
+<p>
+Neo Slice Arena is not directed toward children
+under applicable local age requirements.
+</p>
+</div>
+
+<div class="card">
+<h2>Intellectual Property</h2>
+
+<p>
+All artwork, visuals, source code,
+branding, gameplay systems, and assets
+remain protected intellectual property.
+</p>
+</div>
+
+<div class="card">
+<h2>Contact</h2>
+
+<p>
+appsbymuj@gmail.com
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+© 2026 Manzi Kevin — All Rights Reserved
+</p>
+
+</footer>
 
 </body>
 </html>
