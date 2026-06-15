@@ -5,287 +5,312 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Neon Slice Arena</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box}
+
+/* THEME */
+:root{
+  --bg:#000;
+  --text:#fff;
+  --accent:#bfbfbf;
+  --card:#0a0a0a;
 }
 
-:root {
-  --bg: #000;
-  --text: #fff;
-  --accent: #999;
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  overflow-x:hidden;
 }
 
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: var(--bg);
-  color: var(--text);
-  overflow-x: hidden;
-}
-
-/* Animated Grid Background */
-.bg-grid {
-  position: fixed;
-  inset: 0;
+/* GRID BACKGROUND */
+.bg-grid{
+  position:fixed;
+  inset:0;
   background-image:
     linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
-  z-index: -3;
-  animation: gridScroll 20s linear infinite;
+  background-size:40px 40px;
+  z-index:-1;
+  animation:gridScroll 18s linear infinite;
 }
-@keyframes gridScroll {
-  from { transform: translateY(0); }
-  to { transform: translateY(40px); }
-}
-
-/* Header */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 24px 8%;
-  background: #000;
-  border-bottom: 2px solid var(--text);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+@keyframes gridScroll{
+  from{transform:translateY(0)}
+  to{transform:translateY(40px)}
 }
 
-.logo-wrap {
-  display: flex;
-  align-items: center;
-  gap: 18px;
+/* HEADER */
+header{
+  padding:24px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:2px solid var(--text);
+  background:#000;
+  position:sticky;
+  top:0;
+  z-index:10;
 }
 
-.logo-image {
-  width: 72px;
-  height: 72px;
-  image-rendering: pixelated;
-  filter: drop-shadow(0 0 12px var(--text));
+.logo{
+  display:flex;
+  align-items:center;
+  gap:16px;
 }
 
-.logo-text {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.8rem;
-  line-height: 1.4;
-  text-transform: uppercase;
-  color: var(--text);
+.logo img{
+  width:70px;
+  height:70px;
+  image-rendering:pixelated;
+  filter:drop-shadow(0 0 10px #fff);
 }
 
-/* Navigation */
-nav {
-  display: flex;
-  gap: 28px;
-}
-nav a {
-  color: var(--text);
-  text-decoration: none;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.6rem;
-  position: relative;
-  transition: 0.3s;
-}
-nav a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 0%;
-  height: 2px;
-  background: var(--text);
-  transition: 0.3s;
-}
-nav a:hover::after {
-  width: 100%;
-}
-nav a:hover {
-  text-shadow: 0 0 8px var(--text);
+.logo-text{
+  font-family:'Press Start 2P';
+  font-size:0.8rem;
+  line-height:1.4;
+  text-transform:uppercase;
 }
 
-/* Hero Section */
-.hero {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  padding: 120px 8%;
-  min-height: 80vh;
+nav{
+  display:flex;
+  gap:24px;
 }
 
-.badge {
-  display: inline-block;
-  padding: 8px 14px;
-  border: 2px solid var(--text);
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.6rem;
-  margin-bottom: 24px;
-  text-transform: uppercase;
+nav a{
+  font-family:'Press Start 2P';
+  font-size:0.6rem;
+  color:var(--text);
+  text-decoration:none;
+  position:relative;
 }
 
-h1 {
-  font-family: 'Press Start 2P', monospace;
-  font-size: clamp(1.4rem, 6vw, 2.4rem);
-  line-height: 1.6;
-  margin-bottom: 24px;
-  text-transform: uppercase;
-  text-shadow: 0 0 12px var(--text);
-  animation: fadeIn 1.5s ease forwards;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+nav a::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0%;
+  height:2px;
+  background:var(--text);
+  transition:0.3s;
 }
 
-.hero p {
-  max-width: 700px;
-  color: var(--accent);
-  line-height: 1.8;
-  margin-bottom: 40px;
+nav a:hover::after{
+  width:100%;
 }
 
-/* Buttons */
-.hero-buttons {
-  display: flex;
-  gap: 18px;
-  flex-wrap: wrap;
-  justify-content: center;
+/* SECTIONS */
+section{
+  padding:100px 8%;
+  max-width:1200px;
+  margin:auto;
+  text-align:center;
 }
 
-.primary-btn, .secondary-btn {
-  padding: 14px 24px;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.6rem;
-  border: 2px solid var(--text);
-  text-decoration: none;
-  transition: 0.3s;
-}
-.primary-btn {
-  background: var(--text);
-  color: var(--bg);
-}
-.primary-btn:hover {
-  background: var(--bg);
-  color: var(--text);
-  box-shadow: 0 0 10px var(--text);
-}
-.secondary-btn {
-  color: var(--text);
-}
-.secondary-btn:hover {
-  background: var(--text);
-  color: var(--bg);
-  box-shadow: 0 0 10px var(--text);
+.badge{
+  display:inline-block;
+  padding:8px 14px;
+  border:2px solid var(--text);
+  font-family:'Press Start 2P';
+  font-size:0.6rem;
+  margin-bottom:24px;
 }
 
-/* Sections */
-.section {
-  padding: 100px 8%;
-  text-align: center;
+h1{
+  font-family:'Press Start 2P';
+  font-size:clamp(1.4rem,6vw,2.4rem);
+  text-transform:uppercase;
+  margin-bottom:24px;
+  text-shadow:0 0 12px #fff;
 }
 
-h2 {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.8rem;
-  margin-bottom: 14px;
-  text-transform: uppercase;
+h2{
+  font-family:'Press Start 2P';
+  font-size:0.9rem;
+  margin-bottom:14px;
+  text-transform:uppercase;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  margin-top: 50px;
+p{
+  color:var(--accent);
+  line-height:1.8;
+  max-width:800px;
+  margin:auto;
 }
 
-/* Cards */
-.card {
-  padding: 30px;
-  border: 2px solid var(--text);
-  background: #0a0a0a;
-  box-shadow: inset 0 0 10px rgba(255,255,255,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 0 20px rgba(255,255,255,0.3);
-}
-.card p {
-  color: var(--accent);
-  line-height: 1.6;
+/* BUTTONS */
+.buttons{
+  margin-top:40px;
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  flex-wrap:wrap;
 }
 
-/* Footer */
-footer {
-  padding: 40px;
-  text-align: center;
-  border-top: 2px solid var(--text);
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.6rem;
-  color: var(--accent);
+.btn{
+  padding:14px 24px;
+  border:2px solid var(--text);
+  font-family:'Press Start 2P';
+  font-size:0.6rem;
+  text-decoration:none;
+  transition:0.3s;
 }
 
-/* Mobile */
-@media(max-width:768px) {
-  header {
-    flex-direction: column;
-    gap: 20px;
-  }
-  nav {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  h1 {
-    font-size: 1.2rem;
-  }
+.btn-primary{
+  background:var(--text);
+  color:var(--bg);
+}
+
+.btn-primary:hover{
+  background:var(--bg);
+  color:var(--text);
+  box-shadow:0 0 10px #fff;
+}
+
+.btn-secondary{
+  color:var(--text);
+}
+
+.btn-secondary:hover{
+  background:var(--text);
+  color:var(--bg);
+  box-shadow:0 0 10px #fff;
+}
+
+/* GRID */
+.grid{
+  margin-top:50px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px;
+}
+
+/* CARDS */
+.card{
+  background:var(--card);
+  border:2px solid var(--text);
+  padding:30px;
+  text-align:center;
+  transition:0.3s;
+  box-shadow:inset 0 0 10px rgba(255,255,255,0.1);
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 20px rgba(255,255,255,0.3);
+}
+
+/* FOOTER */
+footer{
+  padding:40px;
+  text-align:center;
+  border-top:2px solid var(--text);
+  font-family:'Press Start 2P';
+  font-size:0.6rem;
+  color:var(--accent);
 }
 </style>
 </head>
 
 <body>
+
 <div class="bg-grid"></div>
 
 <header>
-  <div class="logo-wrap">
-    <img src="logo.png" alt="Neon Slice Arena Logo" class="logo-image">
+  <div class="logo">
+    <img src="logo.png">
     <div class="logo-text">NEON SLICE<br>ARENA</div>
   </div>
+
   <nav>
     <a href="#home">HOME</a>
+    <a href="#features">FEATURES</a>
     <a href="#tips">TIPS</a>
     <a href="#privacy">PRIVACY</a>
   </nav>
 </header>
 
-<section class="hero" id="home">
+<!-- HERO -->
+<section id="home">
   <div class="badge">RETRO SLICE COMBAT</div>
   <h1>SLICE. SURVIVE. DOMINATE.</h1>
-  <p>Enter the pixel battlefield where reflexes decide survival. Destroy chaos, unleash combos, and dominate the arena in the ultimate retro slicing experience.</p>
-  <div class="hero-buttons">
-    <a href="#tips" class="primary-btn">VIEW TIPS</a>
-    <a href="#privacy" class="secondary-btn">PRIVACY POLICY</a>
+  <p>
+    Enter the pixel battlefield where reflexes decide survival. Destroy chaos, unleash combos,
+    master powerful abilities, and dominate the arena in the ultimate retro slicing experience.
+  </p>
+
+  <div class="buttons">
+    <a href="#tips" class="btn btn-primary">VIEW TIPS</a>
+    <a href="#privacy" class="btn btn-secondary">PRIVACY POLICY</a>
   </div>
 </section>
 
-<section class="section">
+<!-- FEATURES -->
+<section id="features">
   <div class="badge">GAME FEATURES</div>
   <h1>WELCOME TO THE ARENA</h1>
+
   <div class="grid">
-    <div class="card"><h2>⚡ FAST ACTION</h2><p>Every second gets faster. Precision and reaction speed are everything.</p></div>
-    <div class="card"><h2>🔥 COMBO SLICING</h2><p>Chain slices together to boost your score and dominate the leaderboard.</p></div>
-    <div class="card"><h2>🌌 RETRO VISUALS</h2><p>Experience pixel chaos and monochrome arcade energy.</p></div>
+    <div class="card">
+      <h2>⚡ FAST ACTION</h2>
+      <p>Every second gets faster. Precision and reaction speed are everything.</p>
+    </div>
+
+    <div class="card">
+      <h2>🔥 COMBO SLICING</h2>
+      <p>Chain slices together to boost your score and dominate the leaderboard.</p>
+    </div>
+
+    <div class="card">
+      <h2>🌌 RETRO VISUALS</h2>
+      <p>Experience pixel chaos and monochrome arcade energy.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TIPS -->
+<section id="tips">
+  <div class="badge">BEGINNER GUIDE</div>
+  <h1>MASTER THE EMOJIS</h1>
+
+  <div class="grid">
+
+    <div class="card"><h2>🐉 DRAGON</h2><p>Destroys every emoji on screen. Use when overloaded.</p></div>
+    <div class="card"><h2>💣 BOMB</h2><p>Instantly removes one life. Avoid slicing it.</p></div>
+    <div class="card"><h2>👹 ONI</h2><p>Also removes a life. Never slice it.</p></div>
+    <div class="card"><h2>🚗 CAR</h2><p>Splits into more emojis. Slice all for bonus points.</p></div>
+    <div class="card"><h2>🥑 AVOCADO</h2><p>Duplicates into more targets. Clear quickly.</p></div>
+    <div class="card"><h2>🤡 CLOWN</h2><p>Multiplies after slicing. Keep slicing clones.</p></div>
+    <div class="card"><h2>👼 ANGEL</h2><p>Restores one life. Never miss it.</p></div>
+    <div class="card"><h2>🪽 WING</h2><p>Restores life. Slice fast before it disappears.</p></div>
+    <div class="card"><h2>⚡ LIGHTNING</h2><p>Moves fast and unpredictably. Slice with caution.</p></div>
+    <div class="card"><h2>🧊 ICE</h2><p>Freezes the screen briefly for safe slicing.</p></div>
+
+  </div>
+</section>
+
+<!-- PRIVACY -->
+<section id="privacy">
+  <div class="badge">LEGAL & PRIVACY</div>
+  <h1>PRIVACY POLICY</h1>
+
+  <div class="grid">
+    <div class="card"><h2>Information Collection</h2><p>Gameplay stats, device info, crash reports, analytics, and ad identifiers.</p></div>
+    <div class="card"><h2>Advertising</h2><p>Google AdMob and similar services may display ads.</p></div>
+    <div class="card"><h2>Analytics</h2><p>Firebase Analytics may be used to improve performance.</p></div>
+    <div class="card"><h2>Children's Privacy</h2><p>Not directed toward children under local age requirements.</p></div>
+    <div class="card"><h2>Intellectual Property</h2><p>All artwork, visuals, code, and assets remain protected IP.</p></div>
+    <div class="card"><h2>Contact</h2><p>appsbymuj@gmail.com</p></div>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 Neon Slice Arena — All Rights Reserved</p>
+  © 2026 Neon Slice Arena — All Rights Reserved
 </footer>
+
 </body>
 </html>
